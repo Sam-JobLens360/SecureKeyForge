@@ -40,5 +40,9 @@ public static class Program
         var pt = Layers.DoubleAesGcmDecrypt(blob, master);
         File.WriteAllBytesAsync("secret.out", pt);
         // Or: Layers.XChaChaOverAesDecrypt(blob, master);
+
+        CryptographicOperations.ZeroMemory(master);
+        CryptographicOperations.ZeroMemory(blob);
+        CryptographicOperations.ZeroMemory(plaintext);
     }
 }
